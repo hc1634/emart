@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Products from "../components/products";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
-import debounce from "lodash.debounce";
 
 const Home = ({ products, cartItems, addToCart }) => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +11,6 @@ const Home = ({ products, cartItems, addToCart }) => {
   const [sortOption, setSortOption] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const productsPerPage = 10;
 
   useEffect(() => {
@@ -21,14 +19,6 @@ const Home = ({ products, cartItems, addToCart }) => {
       ...new Set(products.map((product) => product.category)),
     ]);
   }, [products]);
-
-  // Debounce search input
-  const debouncedSearch = useCallback(
-    debounce((query) => {
-      setDebouncedSearchQuery(query);
-    }, 300),
-    [setDebouncedSearchQuery]
-  );
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -46,15 +36,12 @@ const Home = ({ products, cartItems, addToCart }) => {
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
-    debouncedSearch(event.target.value);
   };
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
       selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSearchQuery = product.title
-      .toLowerCase()
-      .includes(debouncedSearchQuery.toLowerCase());
+    const matchesSearchQuery = product.title.toLowerCase();
     return matchesCategory && matchesSearchQuery;
   });
 
