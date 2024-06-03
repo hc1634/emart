@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const ProductDetails = ({ products, addToCart }) => {
   const { productTitle } = useParams();
@@ -22,9 +23,7 @@ const ProductDetails = ({ products, addToCart }) => {
 
   return (
     <>
-      <center className="py-3">
-        <h2>About Product</h2>
-      </center>
+      <Navbar />
       <div className="proDetailPage">
         <div className="container">
           <div className="row">

@@ -5,6 +5,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./components/Cart";
 import axios from "axios";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 // Cart reducer function
 const cartReducer = (state, action) => {
@@ -61,6 +62,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Router>
         {popupMessage && <div className="popup">{popupMessage}</div>}
         <Routes>

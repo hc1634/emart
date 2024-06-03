@@ -4,6 +4,7 @@ import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Home = ({ products, cartItems, addToCart }) => {
   const [categories, setCategories] = useState([]);
@@ -48,41 +49,41 @@ const Home = ({ products, cartItems, addToCart }) => {
   });
 
   return (
-    <div className="container">
-      <center>
-        <h2 className="my-3">Emart</h2>
-      </center>
-      <div className="filters-carts">
-        <Filter
-          categories={categories}
-          onCategoryChange={handleCategoryChange}
+    <>
+      <Navbar />
+      <div className="container homePage">
+        <div className="filters-carts">
+          <Filter
+            categories={categories}
+            onCategoryChange={handleCategoryChange}
+          />
+          <Sort onSortChange={handleSortChange} />
+          <input
+            type="text"
+            className="search-input m-3"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <Link to="/cart" className="cartButton ml-2 p-3">
+            Cart({cartItems.length})
+          </Link>
+        </div>
+        <Products
+          products={filteredProducts}
+          sortOption={sortOption}
+          currentPage={currentPage}
+          productsPerPage={productsPerPage}
+          addToCart={addToCart}
         />
-        <Sort onSortChange={handleSortChange} />
-        <input
-          type="text"
-          className="search-input m-3"
-          placeholder="Search products..."
-          value={searchQuery}
-          onChange={handleSearchChange}
+        <Pagination
+          totalProducts={filteredProducts.length}
+          productsPerPage={productsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
         />
-        <Link to="/cart" className="cartButton ml-2 p-3">
-          Cart({cartItems.length})
-        </Link>
       </div>
-      <Products
-        products={filteredProducts}
-        sortOption={sortOption}
-        currentPage={currentPage}
-        productsPerPage={productsPerPage}
-        addToCart={addToCart}
-      />
-      <Pagination
-        totalProducts={filteredProducts.length}
-        productsPerPage={productsPerPage}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
-    </div>
+    </>
   );
 };
 

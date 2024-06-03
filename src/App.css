@@ -64,6 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 80px;
 }
 .proInnerPagePrice {
   color: #575654;
@@ -241,4 +242,7 @@
   color: #272726;
   font-weight: bold;
   font-size: 15px;
+}
+.homePage {
+  margin-top: 60px;
 }
