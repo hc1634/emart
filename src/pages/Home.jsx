@@ -41,7 +41,9 @@ const Home = ({ products, cartItems, addToCart }) => {
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
       selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSearchQuery = product.title.toLowerCase();
+    const matchesSearchQuery = product.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearchQuery;
   });
 
