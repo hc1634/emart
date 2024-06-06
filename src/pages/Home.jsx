@@ -3,7 +3,7 @@ import Products from "../components/products";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import Pagination from "../components/Pagination";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Home = ({ products, cartItems, addToCart }) => {
@@ -65,9 +65,9 @@ const Home = ({ products, cartItems, addToCart }) => {
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <Link to="/cart" className="cartButton ml-2 p-3">
+          {/* <Link to="/cart" className="cartButton ml-2 p-3">
             Cart({cartItems.length})
-          </Link>
+          </Link> */}
         </div>
         <Products
           products={filteredProducts}

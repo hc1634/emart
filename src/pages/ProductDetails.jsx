@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
@@ -7,19 +7,19 @@ const ProductDetails = ({ products, addToCart }) => {
   const product = products.find(
     (prod) => prod.title.replace(/ /g, "-") === productTitle.replace(/ /g, "-")
   );
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    setShowPopup(true);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000); // Hide popup after 2 seconds
-  };
+  // const handleAddToCart = () => {
+  //   addToCart(product);
+  //   setShowPopup(true);
+  //   setTimeout(() => {
+  //     setShowPopup(false);
+  //   }, 2000); // Hide popup after 2 seconds
+  // };
 
   return (
     <>
@@ -45,14 +45,14 @@ const ProductDetails = ({ products, addToCart }) => {
                 <p className="proInnerPagePrice">
                   Rating : {product.rating.rate}
                 </p>
-                <button onClick={handleAddToCart} className="btn btn-primary">
+                {/* <button onClick={handleAddToCart} className="btn btn-primary">
                   Add to Cart
-                </button>
-                {showPopup && (
+                </button> */}
+                {/* {showPopup && (
                   <div className="popup">
                     Product successfully added to cart!
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>

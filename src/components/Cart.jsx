@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Cart = ({ cartItems, removeFromCart }) => {
+  console.log("cartItems", cartItems);
   return (
     <>
       <center>

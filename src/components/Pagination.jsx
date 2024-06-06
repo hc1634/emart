@@ -1,7 +1,12 @@
 // Components/Pagination.jsx
 import React from "react";
 
-const Pagination = ({ totalProducts, productsPerPage, currentPage, onPageChange }) => {
+const Pagination = ({
+  totalProducts,
+  productsPerPage,
+  currentPage,
+  onPageChange,
+}) => {
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   if (totalProducts <= productsPerPage) {
